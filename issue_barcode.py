@@ -130,16 +130,17 @@ else:
         for row in result:
                 regid=row[0]
                 name=row[1]
-sql="select bookname,delay from bookinfo where barid='%s';"%a[0]
+sql="select bookname,delay,location from bookinfo where barid='%s';"%a[0]
 cur.execute(sql)
 result1=cur.fetchall()
 for row1 in result1:
     bookname=row1[0]
     delay=row1[1]
+    location=row1[2]
 inp4=raw_input("Enter issuedate").strip('\n')  # for eg. 22/07/2017
 inp5=raw_input("Enter return date").strip('\n')
 l=1
-sql="insert into issueb (id,name,bookid,bookname,issuedate,returndate,status,delay)values('%s','%s','%s','%s','%s','%s','%s','%s');"%(regid,name,a[0],bookname,inp4,inp5,l,delay)
+sql="insert into issueb (id,name,bookid,bookname,issuedate,returndate,status,delay,location)values('%s','%s','%s','%s','%s','%s','%s','%s','%s');"%(regid,name,a[0],bookname,inp4,inp5,l,delay,location)
 
 try:
     cur.execute(sql)
